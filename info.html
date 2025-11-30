@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Ana — Info</title>
+    <!-- Pretendard Font -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <!-- Radley Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radley:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="info-styles.css" />
+    <!-- Custom JavaScript -->
+    <script src="info-script.js"></script>
+  </head>
+  <body>
+    <!-- Fixed Navbar -->
+    <header class="navbar" role="banner">
+      <div class="nav-inner" role="navigation" aria-label="Top Navigation">
+        <!-- 1) project ana -->
+        <a class="brand" href="index.html">
+          <img
+            class="brand-icon"
+            src="IMG/qeqe.png"
+            alt="Pro.ject Ana Icon"
+            width="20"
+            height="20"
+          />
+          Pro.ject Ana
+        </a>
+        <div class="divider"></div>
+
+        <!-- 중앙 네비게이션 링크들 -->
+        <div class="nav-center">
+          <a href="index.html#home">Home</a>
+          <div class="divider"></div>
+          <a href="index.html#back4-section-3">Your Story</a>
+          <div class="divider"></div>
+          <a href="info.html" class="active">About</a>
+        </div>
+        <div class="divider"></div>
+
+        <!-- Search -->
+        <div class="search">
+          <form
+            role="search"
+            onsubmit="event.preventDefault(); if(this.q.value.trim()) alert('검색: ' + this.q.value);"
+          >
+            <input
+              name="q"
+              type="search"
+              placeholder="Search…"
+              aria-label="Search"
+            />
+            <button type="submit" aria-label="Search button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.5 3a7.5 7.5 0 0 1 5.934 12.13l4.218 4.218-1.414 1.414-4.218-4.218A7.5 7.5 0 1 1 10.5 3m0 2a5.5 5.5 0 1 0 0 11a5.5 5.5 0 0 0 0-11"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- PPT 이미지 섹션 -->
+      <section id="ppt-slider-section">
+        <div class="ppt-container">
+          <img src="IMG/why.png" alt="Why Title" class="ppt-title-img" />
+          <p class="ppt-subtitle">BACKGROUND</p>
+          <div class="ppt-images-list">
+            <img src="IMG/ppt1.png" alt="PPT Slide 1" class="ppt-image" />
+            <img src="IMG/ppt2.png" alt="PPT Slide 2" class="ppt-image" />
+            <img src="IMG/ppt3.png" alt="PPT Slide 3" class="ppt-image" />
+            <img src="IMG/ppt4.png" alt="PPT Slide 4" class="ppt-image" />
+            <img src="IMG/ppt5.png" alt="PPT Slide 5" class="ppt-image" />
+            <img src="IMG/ppt6.png" alt="PPT Slide 6" class="ppt-image" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Pro Ana 섹션 -->
+      <section id="proana-section">
+        <div class="proana-content">
+          <img src="IMG/proana.png" alt="Pro Ana Image" class="proana-img" />
+          <img src="IMG/whatis.png" alt="What Is Image" class="ppt-image" />
+        </div>
+      </section>
+
+      <section id="back4-info-section">
+        <div class="back4-image-section-info">
+          <img src="IMG/back4.png" alt="Back4 Image" class="back4-img-info" />
+          <img src="IMG/view.png" alt="View Image" class="view-img" />
+          <div class="view-gradient-overlay"></div>
+          <img src="IMG/red.png" alt="Red Image" class="red-img" />
+          <img src="IMG/red2.png" alt="Red2 Image" class="red2-img" />
+          <img
+            src="IMG/eyefile1.png"
+            alt="EyeFile1 Image"
+            class="eyefile-img eyefile1-img"
+            onclick="showIda()"
+          />
+          <img
+            src="IMG/eyefile2.png"
+            alt="EyeFile2 Image"
+            class="eyefile-img eyefile2-img"
+            onclick="showProfile2()"
+          />
+          <img
+            src="IMG/eyefile3.png"
+            alt="EyeFile3 Image"
+            class="eyefile-img eyefile3-img"
+            onclick="showProfile3()"
+          />
+
+          <!-- Ida Modal (Profile1) -->
+          <div class="ida-modal-overlay" id="ida-modal-overlay">
+            <div class="ida-gradient-overlay"></div>
+            <button class="back-button" onclick="hideIda()">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 12H5M12 19L5 12L12 5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <img
+              src="IMG/profile1.png"
+              alt="Profile Image"
+              class="ida-img"
+              id="ida-img"
+            />
+            <img
+              src="IMG/voice1.png"
+              alt="Voice1 Image"
+              class="voice-img voice1-img"
+              id="voice1-img"
+            />
+            <audio
+              id="voice1-audio"
+              src="IMG/voice1.mp4"
+              preload="auto"
+            ></audio>
+          </div>
+
+          <!-- Profile2 Modal -->
+          <div class="profile2-modal-overlay" id="profile2-modal-overlay">
+            <div class="profile2-gradient-overlay"></div>
+            <button class="back-button" onclick="hideProfile2()">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 12H5M12 19L5 12L12 5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <img
+              src="IMG/profile2.png"
+              alt="Profile2 Image"
+              class="profile2-img"
+              id="profile2-img"
+            />
+            <img
+              src="IMG/voice2.png"
+              alt="Voice2 Image"
+              class="voice-img voice2-img"
+              id="voice2-img"
+            />
+            <audio
+              id="voice2-audio"
+              src="IMG/voice2.mp4"
+              preload="auto"
+            ></audio>
+          </div>
+
+          <!-- Profile3 Modal -->
+          <div class="profile3-modal-overlay" id="profile3-modal-overlay">
+            <div class="profile3-gradient-overlay"></div>
+            <button class="back-button" onclick="hideProfile3()">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 12H5M12 19L5 12L12 5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <img
+              src="IMG/profile3.png"
+              alt="Profile3 Image"
+              class="profile3-img"
+              id="profile3-img"
+            />
+            <img
+              src="IMG/voice3.png"
+              alt="Voice3 Image"
+              class="voice-img voice3-img"
+              id="voice3-img"
+            />
+            <audio
+              id="voice3-audio"
+              src="IMG/voice3.mp4"
+              preload="auto"
+            ></audio>
+          </div>
+        </div>
+      </section>
+
+      <!-- File Overlay (전체 화면 오버레이) -->
+      <div class="file-overlay" id="file-overlay">
+        <img
+          src="IMG/social.png"
+          alt="Social Image"
+          class="overlay-img"
+          id="social-img"
+        />
+        <img
+          src="IMG/psy.png"
+          alt="Psy Image"
+          class="overlay-img"
+          id="psy-img"
+        />
+        <img
+          src="IMG/comm.png"
+          alt="Comm Image"
+          class="overlay-img"
+          id="comm-img"
+        />
+      </div>
+
+      <section id="info-section">
+        <div class="info-content"></div>
+      </section>
+
+      <section class="footer"></section>
+
+      <footer class="custom-footer">
+        <div class="footer-content">
+          <div class="footer-emails">
+            <a href="mailto:00rlaehgml@gmail.com" class="footer-email"
+              >00rlaehgml@gmail.com</a
+            >
+            <span class="footer-divider">|</span>
+            <a href="mailto:design.bansw@gmail.com" class="footer-email"
+              >design.bansw@gmail.com</a
+            >
+            <span class="footer-divider">|</span>
+            <a href="mailto:mj637812@naver.com" class="footer-email"
+              >mj637812@naver.com</a
+            >
+          </div>
+          <p class="footer-text">© 2025 Pro.ject Ana. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

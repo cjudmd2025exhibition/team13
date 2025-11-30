@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Ana — Interactive Web</title>
+    <!-- Pretendard Font -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <!-- Radley Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Radley:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-indicator-item" data-sections="background-image">
+        <div class="scroll-indicator-dot"></div>
+        <span class="scroll-indicator-label">Home</span>
+      </div>
+      <div
+        class="scroll-indicator-item"
+        data-sections="google-section,chatgroup-section,background-section,back4-section"
+      >
+        <div class="scroll-indicator-dot"></div>
+        <span class="scroll-indicator-label">Who</span>
+      </div>
+      <div
+        class="scroll-indicator-item"
+        data-sections="black-section,mac2-section,thegaze-section"
+      >
+        <div class="scroll-indicator-dot"></div>
+        <span class="scroll-indicator-label">What</span>
+      </div>
+      <div
+        class="scroll-indicator-item"
+        data-sections="chang-section,body-section"
+      >
+        <div class="scroll-indicator-dot"></div>
+        <span class="scroll-indicator-label">Where</span>
+      </div>
+      <div
+        class="scroll-indicator-item"
+        data-sections="what-section,file-section"
+      >
+        <div class="scroll-indicator-dot"></div>
+        <span class="scroll-indicator-label">What</span>
+      </div>
+      <div
+        class="scroll-indicator-item"
+        data-sections="back4-section-2,line-section,fileback-section"
+      >
+        <div class="scroll-indicator-dot"></div>
+        <span class="scroll-indicator-label">How</span>
+      </div>
+      <div
+        class="scroll-indicator-item"
+        data-sections="back4-section-3,tellfile-section,still-section"
+      >
+        <div class="scroll-indicator-dot"></div>
+        <span class="scroll-indicator-label">Your Story</span>
+      </div>
+    </div>
+
+    <!-- Home Button -->
+    <button class="home-button" id="home-button" onclick="scrollToHome()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <!-- Fixed Navbar -->
+    <header class="navbar" role="banner">
+      <div class="nav-inner" role="navigation" aria-label="Top Navigation">
+        <!-- 1) project ana -->
+        <a class="brand" href="#">
+          <img
+            class="brand-icon"
+            src="IMG/qeqe.png"
+            alt="Pro.ject Ana Icon"
+            width="20"
+            height="20"
+          />
+          Pro.ject Ana
+        </a>
+        <div class="divider"></div>
+
+        <!-- 중앙 네비게이션 링크들 -->
+        <div class="nav-center">
+          <a href="#home">Home</a>
+          <div class="divider"></div>
+          <a href="#guestbook">Your Story</a>
+          <div class="divider"></div>
+          <a href="info.html">About</a>
+        </div>
+        <div class="divider"></div>
+
+        <!-- Search -->
+        <div class="search">
+          <form
+            role="search"
+            onsubmit="event.preventDefault(); if(this.q.value.trim()) alert('검색: ' + this.q.value);"
+          >
+            <input
+              name="q"
+              type="search"
+              placeholder="Search…"
+              aria-label="Search"
+            />
+            <button type="submit" aria-label="Search button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M10.5 3a7.5 7.5 0 0 1 5.934 12.13l4.218 4.218-1.414 1.414-4.218-4.218A7.5 7.5 0 1 1 10.5 3m0 2a5.5 5.5 0 1 0 0 11a5.5 5.5 0 0 0 0-11"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <div class="background-image">
+        <div class="hero-content">
+          <img src="IMG/city.png" alt="City Background" class="city-bg-img" />
+          <div class="speech-bubble" id="speech-bubble-1"></div>
+          <div class="speech-bubble" id="speech-bubble-2"></div>
+          <div class="speech-bubble" id="speech-bubble-3"></div>
+          <div class="speech-bubble" id="speech-bubble-4"></div>
+          <div class="speech-bubble" id="speech-bubble-5"></div>
+          <img src="IMG/Pro.png" alt="Pro Background" class="bg-img" />
+          <div class="scroll-cue" aria-hidden="true">
+            <div class="scroll-mouse">
+              <div class="scroll-wheel"></div>
+            </div>
+            <div class="scroll-cue-text">스크롤을 해주세요</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Image Section -->
+      <section id="google-section">
+        <div class="google-image-section">
+          <img src="IMG/google.png" alt="Google Image" class="google-img" />
+          <div class="google-search-container">
+            <form
+              class="google-search-form"
+              onsubmit="event.preventDefault(); if(this.q.value.trim()) alert('검색: ' + this.q.value);"
+            >
+              <div class="search-input-wrapper">
+                <svg
+                  class="search-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+                <input
+                  type="text"
+                  name="q"
+                  class="google-search-input"
+                  placeholder="Google 검색 또는 URL 입력"
+                  onclick="typeText(this, '#프로아나')"
+                />
+                <svg
+                  class="mic-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"
+                  />
+                </svg>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chatgroup Image Section -->
+      <section id="chatgroup-section">
+        <div class="chatgroup-image-section">
+          <!-- Danger Images -->
+          <img
+            src="IMG/danger1.png"
+            alt="Danger 1"
+            class="danger-img danger-1"
+          />
+          <img
+            src="IMG/danger2.png"
+            alt="Danger 2"
+            class="danger-img danger-2"
+          />
+          <img
+            src="IMG/danger3.png"
+            alt="Danger 3"
+            class="danger-img danger-3"
+          />
+          <img
+            src="IMG/danger4.png"
+            alt="Danger 4"
+            class="danger-img danger-4"
+          />
+          <img
+            src="IMG/danger1.png"
+            alt="Danger 5"
+            class="danger-img danger-5"
+          />
+          <img
+            src="IMG/danger2.png"
+            alt="Danger 6"
+            class="danger-img danger-6"
+          />
+          <img
+            src="IMG/danger3.png"
+            alt="Danger 7"
+            class="danger-img danger-7"
+          />
+
+          <img
+            src="image/chatgroup.png"
+            alt="Chatgroup Image"
+            class="chatgroup-img"
+          />
+          <div class="arrow-down">
+            <div class="arrow-line"></div>
+            <div class="arrow-head">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Background Image Section -->
+      <section id="background-section">
+        <div class="background-image-section">
+          <div class="object-container"></div>
+        </div>
+      </section>
+
+      <!-- Back4 Image Section -->
+      <section id="back4-section">
+        <div class="back4-image-section">
+          <img src="IMG/back4.png" alt="Back4 Image" class="back4-img" />
+          <img src="IMG/mark.png" alt="Mark Image" class="beat-img" />
+          <img src="IMG/mark2.png" alt="Mark2 Image" class="beat2-img" />
+          <img src="IMG/heart.png" alt="Heart Image" class="heart-img" />
+        </div>
+      </section>
+
+      <!-- Black Background Section -->
+      <section id="black-section">
+        <div class="black-content">
+          <!-- Eyeback Background Images -->
+          <img
+            src="IMG/eyeback2.png"
+            alt="Eyeback 2"
+            class="eyeback-bg eyeback-bg-2"
+          />
+          <img
+            src="IMG/eyeback3.png"
+            alt="Eyeback 3"
+            class="eyeback-bg eyeback-bg-3"
+          />
+          <img
+            src="IMG/eyeback4.png"
+            alt="Eyeback 4"
+            class="eyeback-bg eyeback-bg-4"
+          />
+          <img
+            src="IMG/eyeback5.png"
+            alt="Eyeback 5"
+            class="eyeback-bg eyeback-bg-5"
+          />
+          <img
+            src="IMG/eyeback7.png"
+            alt="Eyeback 7"
+            class="eyeback-bg eyeback-bg-7"
+          />
+
+          <img src="IMG/eyeback.png" alt="Eye Back Image" class="eyeback-img" />
+          <img
+            src="IMG/user.png"
+            alt="User Overlay"
+            class="user-overlay"
+            onclick="toggleTag()"
+          />
+          <div class="click-hint-text">클릭해주세요</div>
+          <img src="IMG/tag.png" alt="Tag Image" class="tag-img" id="tag-img" />
+          <img src="IMG/mac1.png" alt="Mac1 Image" class="mac1-img" />
+          <img src="IMG/eye1.png" alt="Eye1 Image" class="eye-img eye1" />
+          <img src="IMG/eye2.png" alt="Eye2 Image" class="eye-img eye2" />
+          <img src="IMG/eye3.png" alt="Eye3 Image" class="eye-img eye3" />
+          <img src="IMG/eye4.png" alt="Eye4 Image" class="eye-img eye4" />
+          <img src="IMG/eye5.png" alt="Eye5 Image" class="eye-img eye5" />
+          <img src="IMG/eye6.png" alt="Eye6 Image" class="eye-img eye6" />
+          <img src="IMG/eye7.png" alt="Eye7 Image" class="eye-img eye7" />
+          <img
+            src="IMG/power.png"
+            alt="Power Image"
+            class="overlay-img power-img"
+          />
+          <img
+            src="IMG/hate.png"
+            alt="Hate Image"
+            class="overlay-img hate-img"
+          />
+        </div>
+      </section>
+
+      <!-- Mac2 Image Section -->
+      <section id="mac2-section">
+        <div class="mac2-content">
+          <!-- Eye Animation -->
+          <div class="shutter-eye-container">
+            <div class="shutter-eye shutter-eye-left">
+              <div class="shutter-pupil"></div>
+            </div>
+            <div class="shutter-eye shutter-eye-right">
+              <div class="shutter-pupil"></div>
+            </div>
+          </div>
+
+          <!-- Eyetrack looping video -->
+          <video
+            class="eyetrack-video"
+            src="IMG/eyetrack.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+
+          <img
+            src="IMG/shutter1.png"
+            alt="Shutter1 Image"
+            class="shutter1-img"
+          />
+          <img
+            src="IMG/shutter2.png"
+            alt="Shutter2 Image"
+            class="shutter2-img"
+          />
+          <p class="shutter-hover-hint">마우스를 호버해주세요</p>
+        </div>
+      </section>
+
+      <!-- Thegaze Image Section -->
+      <section id="thegaze-section">
+        <div class="thegaze-content">
+          <img src="IMG/thegaze.png" alt="Thegaze Image" class="thegaze-img" />
+          <p class="thegaze-text glitch" data-text="그 시선의 시작">
+            그 시선의 시작
+          </p>
+          <img
+            src="IMG/gaze.png"
+            alt="Gaze Image"
+            class="gaze-img glitch-img"
+          />
+          <img src="IMG/ball.png" alt="Ball Image" class="ball-img" />
+          <p class="ball-text">What are you looking for?</p>
+          <p class="description-text">
+            우리가 '시선'을 주제로 삼은 것은, 프로아나가 결코 개인의 선택에서
+            비롯된 단순한 문제가 아니라 무심히 던져진 수많은 시선과 말의
+            결과라는 점에 주목했기 때문입니다. 시선은 늘 가볍게 오가지만, 그
+            속에는 평가와 비교, 규범의 힘이 숨어 있습니다. 반복된 시선은 곧
+            사회적 기준이 되고, 그 기준은 다시 개인을 압박하며 자아를
+            해체합니다. 눈에 보이지 않고 기록되지 않기에 더욱 은밀하게 스며드는
+            이 힘을 우리는 드러내고자 합니다. 이번 전시는 그 무형의 폭력을 공간
+            속에 시각화하여, 관람자가 스스로의 시선이 지닌 무게와 파괴력을
+            마주하도록 만듭니다.
+          </p>
+        </div>
+      </section>
+
+      <!-- Chang Image Section -->
+      <section id="chang-section">
+        <div class="chang-content">
+          <img src="IMG/chang.png" alt="Chang Image" class="chang-img" />
+        </div>
+      </section>
+
+      <!-- Body Image Section -->
+      <section id="body-section">
+        <div class="body-content">
+          <h2 class="close-gaze-text">Close the Gaze</h2>
+          <p class="close-gaze-desc">
+            모든 창을 닫아야 다음으로 이동할 수 있습니다.<br />겹쳐진 화면은
+            시선을 상징합니다.
+          </p>
+          <div class="close-gaze-line"></div>
+          <img
+            src="IMG/bodyback.png"
+            alt="Body Back Image"
+            class="bodyback-img"
+          />
+          <img src="IMG/body.png" alt="Body Image" class="body-img" />
+          <p class="body-bottom-text">
+            무심히 쌓인 시선이 왜곡된 몸을 만들어냅니다.<br />그 시선을 제거해야
+            비로소 원래의 존재를 마주할 수 있습니다.
+          </p>
+          <img
+            src="IMG/shoulder1.png"
+            alt="Shoulder1 Image"
+            class="shoulder1-img"
+            onclick="toggleImage(this)"
+          />
+          <img
+            src="IMG/shoulder2.png"
+            alt="Shoulder2 Image"
+            class="shoulder2-img"
+            onclick="toggleImage(this)"
+          />
+          <img
+            src="IMG/shoulder3.png"
+            alt="Shoulder3 Image"
+            class="shoulder3-img"
+            onclick="toggleImage(this)"
+          />
+          <img
+            src="IMG/stomac1.png"
+            alt="Stomac1 Image"
+            class="stomac1-img"
+            onclick="toggleImage(this)"
+          />
+          <img
+            src="IMG/stomac2.png"
+            alt="Stomac2 Image"
+            class="stomac2-img"
+            onclick="toggleImage(this)"
+          />
+          <img
+            src="IMG/leg1.png"
+            alt="Leg1 Image"
+            class="leg1-img"
+            onclick="toggleImage(this)"
+          />
+          <img
+            src="IMG/leg2.png"
+            alt="Leg2 Image"
+            class="leg2-img"
+            onclick="toggleImage(this)"
+          />
+          <img
+            src="IMG/leg3.png"
+            alt="Leg3 Image"
+            class="leg3-img"
+            onclick="toggleImage(this)"
+          />
+
+          <!-- Body 섹션 랜덤 텍스트들 -->
+          <div class="body-random-texts" id="body-random-texts">
+            <!-- JavaScript로 동적으로 생성됩니다 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- What Image Section -->
+      <section id="what-section">
+        <div class="what-content">
+          <img src="IMG/what.png" alt="What Image" class="what-img" />
+          <p class="what-text">무엇이 그녀를 이렇게 만들었을까?</p>
+        </div>
+      </section>
+
+      <!-- File Images Section -->
+      <section id="file-section">
+        <div class="file-content">
+          <img
+            src="IMG/file1.png"
+            alt="File1 Image"
+            class="file1-img"
+            onclick="showOverlay('social')"
+          />
+          <img
+            src="IMG/file2.png"
+            alt="File2 Image"
+            class="file2-img"
+            onclick="showOverlay('psy')"
+          />
+          <img
+            src="IMG/file3.png"
+            alt="File3 Image"
+            class="file3-img"
+            onclick="showOverlay('comm')"
+          />
+        </div>
+        <div class="file-overlay" id="file-overlay">
+          <img
+            src="IMG/social.png"
+            alt="Social Image"
+            class="overlay-img"
+            id="social-img"
+          />
+          <img
+            src="IMG/psy.png"
+            alt="Psy Image"
+            class="overlay-img"
+            id="psy-img"
+          />
+          <img
+            src="IMG/comm.png"
+            alt="Comm Image"
+            class="overlay-img"
+            id="comm-img"
+          />
+        </div>
+      </section>
+
+      <!-- Back4 Image Section -->
+      <section id="back4-section-2">
+        <div class="back4-image-section-2">
+          <img src="IMG/back4.png" alt="Back4 Image" class="back4-img-2" />
+          <img src="IMG/they.png" alt="They Image" class="they-img-2" />
+        </div>
+      </section>
+
+      <!-- Line Image Section -->
+      <section id="line-section">
+        <div class="line-content">
+          <!-- Line Background Images -->
+          <img
+            src="IMG/line3.png"
+            alt="Line3 Background"
+            class="line-bg line-bg-3"
+          />
+          <img
+            src="IMG/line4.png"
+            alt="Line4 Background"
+            class="line-bg line-bg-4"
+          />
+          <img
+            src="IMG/line5.png"
+            alt="Line5 Background"
+            class="line-bg line-bg-5"
+          />
+
+          <img
+            src="IMG/line.png"
+            alt="Line Image"
+            class="line-img"
+            id="line-img"
+          />
+          <img
+            src="IMG/line2.png"
+            alt="Line2 Image"
+            class="line2-img"
+            id="line2-img"
+          />
+          <img
+            src="IMG/eyeinter.png"
+            alt="Eye Inter Image"
+            class="eyeinter-img"
+            onclick="showEyeModal()"
+          />
+          <img
+            src="IMG/point.png"
+            alt="Point Image"
+            class="point-img"
+            onclick="toggleLine()"
+          />
+          <div class="line-overlay" id="line-overlay"></div>
+          <img
+            src="IMG/inter.png"
+            alt="Inter Image"
+            class="inter-img"
+            id="inter-img"
+            onclick="goToLine()"
+          />
+
+          <!-- Eye Modal Overlay -->
+          <div class="eye-modal-overlay" id="eye-modal-overlay">
+            <div class="eye-modal-content">
+              <button class="modal-back-btn" onclick="goToLineFromModal()">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                뒤로
+              </button>
+              <img
+                src="IMG/q1.png"
+                alt="Q1 Image"
+                class="modal-img q1-img"
+                onclick="goToLineFromModal()"
+              />
+              <img
+                src="IMG/a1.png"
+                alt="A1 Image"
+                class="modal-img a1-img"
+                onclick="showHeal()"
+              />
+              <img
+                src="IMG/a2.png"
+                alt="A2 Image"
+                class="modal-img a2-img"
+                onclick="showAp()"
+              />
+              <img
+                src="IMG/a3.png"
+                alt="A3 Image"
+                class="modal-img a3-img"
+                onclick="showZa()"
+              />
+              <img src="IMG/a4.png" alt="A4 Image" class="modal-img a4-img" />
+              <div class="heal-background" id="heal-background"></div>
+              <div class="ap-background" id="ap-background"></div>
+              <div class="za-background" id="za-background"></div>
+              <img
+                src="IMG/heal.png"
+                alt="Heal Image"
+                class="modal-img heal-img"
+                onclick="showLine()"
+              />
+              <img
+                src="IMG/ap.png"
+                alt="Ap Image"
+                class="modal-img ap-img"
+                onclick="showLine()"
+              />
+              <img
+                src="IMG/za.png"
+                alt="Za Image"
+                class="modal-img za-img"
+                onclick="showLine()"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="fileback-section">
+        <div class="fileback-image-section">
+          <img
+            src="IMG/fileback.png"
+            alt="Fileback Image"
+            class="fileback-img"
+          />
+
+          <!-- Mac Images Overlay -->
+          <img
+            src="IMG/mac3.png"
+            alt="Mac3 Image"
+            class="mac-overlay mac3-img"
+            id="mac3-img"
+            onclick="showMac7And8()"
+          />
+          <div class="up-arrow-icon" onclick="showMac7And8()">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 19V5M5 12L12 5L19 12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <p class="mac3-text">당신은 시선을 벗어났나요?</p>
+          <img
+            src="IMG/mac4.png"
+            alt="Mac4 Image"
+            class="mac-overlay mac4-img"
+            id="mac4-img"
+          />
+          <img
+            src="IMG/mac5.png"
+            alt="Mac5 Image"
+            class="mac-overlay mac5-img"
+            id="mac5-img"
+          />
+          <img
+            src="IMG/mac6.png"
+            alt="Mac6 Image"
+            class="mac-overlay mac6-img"
+            id="mac6-img"
+          />
+          <img
+            src="IMG/mac7.png"
+            alt="Mac7 Image"
+            class="mac-overlay mac7-img"
+            id="mac7-img"
+          />
+          <img
+            src="IMG/mac8.png"
+            alt="Mac8 Image"
+            class="mac-overlay mac8-img"
+            id="mac8-img"
+          />
+        </div>
+      </section>
+
+      <section id="back4-section-3">
+        <div class="back4-image-section-3">
+          <img src="IMG/back4.png" alt="Back4 Image" class="back4-img-3" />
+          <img src="IMG/tell.png" alt="Tell Image" class="tell-img" id="guestbook" />
+          <div class="tell-description-text">
+            당신도 시선을 신경썼던 경험이 있나요? 이곳에서 들려주세요
+          </div>
+          <div class="tell-gradient-overlay"></div>
+          <div class="tell-gradient-overlay-bottom"></div>
+          <div class="tell-text-box">
+            <input
+              type="text"
+              placeholder="이름을 입력해주세요..."
+              class="tell-name-input"
+              id="tell-name-input"
+            />
+            <textarea
+              placeholder="여기에 입력해주세요..."
+              class="tell-textarea"
+            ></textarea>
+            <button class="tell-complete-btn" onclick="completeText()">
+              완료
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="tellfile-section">
+        <div class="tellfile-content">
+          <img
+            src="IMG/girl.png"
+            alt="Girl Background"
+            class="tellfile-girl-bg"
+          />
+          <div class="tellfile-list" id="tellfile-list">
+            <!-- 방명록 항목들이 여기에 추가됩니다 -->
+          </div>
+          <div class="tellfile-pagination" id="tellfile-pagination">
+            <!-- 페이지 번호들이 여기에 추가됩니다 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 폴더 내용 모달 -->
+      <div class="tellfile-modal-overlay" id="tellfile-modal-overlay">
+        <div class="tellfile-modal-content">
+          <button class="tellfile-modal-close" onclick="closeTellfileModal()">
+            ×
+          </button>
+          <div class="tellfile-modal-name" id="tellfile-modal-name"></div>
+          <div class="tellfile-modal-text" id="tellfile-modal-text"></div>
+          <div class="tellfile-modal-date" id="tellfile-modal-date"></div>
+        </div>
+      </div>
+
+      <!-- Still Image Section -->
+      <section id="still-section">
+        <div class="still-image-section">
+          <img src="IMG/still.png" alt="Still Image" class="still-img" />
+          <div class="about-link-container">
+            <a href="info.html" class="about-arrow-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <p class="about-link-text">About 페이지로 이동</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer with Matter.js -->
+      <section class="footer"></section>
+
+      <!-- Custom Footer -->
+      <footer class="custom-footer">
+        <div class="footer-content">
+          <div class="footer-emails">
+            <a href="mailto:00rlaehgml@gmail.com" class="footer-email"
+              >00rlaehgml@gmail.com</a
+            >
+            <span class="footer-divider">|</span>
+            <a href="mailto:design.bansw@gmail.com" class="footer-email"
+              >design.bansw@gmail.com</a
+            >
+            <span class="footer-divider">|</span>
+            <a href="mailto:mj637812@naver.com" class="footer-email"
+              >mj637812@naver.com</a
+            >
+          </div>
+          <p class="footer-text">© 2025 Pro.ject Ana. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+
+    <!-- App Script -->
+    <script src="./script.js"></script>
+  </body>
+</html>
